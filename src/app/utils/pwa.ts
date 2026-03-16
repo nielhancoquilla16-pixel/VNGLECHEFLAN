@@ -50,7 +50,7 @@ export function isPWA(): boolean {
 let deferredPrompt: BeforeInstallPromptEvent | null = null;
 
 export function initInstallPrompt() {
-  window.addEventListener('beforeinstallprompt', (e: BeforeInstallPromptEvent) => {
+  (window as any).addEventListener('beforeinstallprompt', (e: BeforeInstallPromptEvent) => {
     e.preventDefault();
     deferredPrompt = e;
     console.log('💾 Install prompt ready');
