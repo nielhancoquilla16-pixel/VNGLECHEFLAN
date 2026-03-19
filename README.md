@@ -1,13 +1,12 @@
 # VNGLECHEFLAN
 
-A React + Vite + PWA web application with Supabase backend integration.
+A React + Vite + PWA web application for dessert shop management.
 
 ## Features
 
 - ⚡ Fast development with Vite
 - 🎨 Tailwind CSS for styling
 - 📱 Progressive Web App (PWA) support
-- 🔐 Supabase authentication and database
 - 🛒 Shopping cart functionality
 - 📊 Admin dashboard
 - 🌐 Offline support
@@ -26,12 +25,11 @@ A React + Vite + PWA web application with Supabase backend integration.
 git clone https://github.com/hanielcoquillajr16-spec/VNGLECHEFLAN-dep.git
 cd VNGLECHEFLAN-dep
 
+# Switch into the frontend folder
+cd frontend
+
 # Install dependencies
 npm install
-
-# Set up environment variables
-cp .env.example .env.local
-# Edit .env.local with your Supabase credentials
 ```
 
 ### Development
@@ -48,13 +46,32 @@ Visit `http://localhost:5173` in your browser.
 npm run build
 ```
 
-This creates an optimized production build in the `dist/` directory.
+This creates an optimized production build in the `dist/` directory (inside `frontend/`).
 
 ### Preview Production Build
 
 ```bash
 npm run preview
 ```
+
+## Backend (Supabase)
+
+This repo is organized into two folders:
+
+- `frontend/` contains the React/Vite app
+- `backend/` contains a minimal Node.js + Express API that connects to Supabase
+
+To run the backend:
+
+```bash
+cd backend
+cp .env.example .env
+# fill in SUPABASE_URL and SUPABASE_KEY
+npm install
+npm run dev
+```
+
+Then visit `http://localhost:4000/api/health` to verify it is running.
 
 ## Deployment
 
@@ -65,30 +82,25 @@ Live site: https://hanielcoquillajr16-spec.github.io/VNGLECHEFLAN-dep/
 ## Project Structure
 
 ```
-src/
-├── app/
-│   ├── components/       # React components
-│   ├── context/         # React context providers
-│   ├── pages/           # Page components
-│   ├── utils/           # Utility functions
-│   └── App.jsx          # Root app component
-├── styles/              # CSS files
-└── main.jsx             # Entry point
+frontend/
+├── src/
+│   ├── app/
+│   │   ├── components/       # React components
+│   │   ├── context/         # React context providers
+│   │   ├── pages/           # Page components
+│   │   ├── utils/           # Utility functions
+│   │   └── App.jsx          # Root app component
+│   ├── styles/              # CSS files
+│   └── main.jsx             # Entry point
+├── public/                 # Static assets
+├── scripts/                # Build scripts
+├── package.json            # Frontend dependencies & scripts
+└── vite.config.ts          # Vite config
 
-public/                 # Static assets
-supabase/              # Supabase configuration
-scripts/               # Build scripts
-```
-
-## Environment Variables
-
-Create a `.env.local` file in the root directory:
-
-```
-VITE_SUPABASE_URL=your_supabase_url
-VITE_SUPABASE_PUBLISHABLE_KEY=your_supabase_anon_key
+backend/                   # (backend code lives here)
 ```
 
 ## License
 
 MIT
+koki
